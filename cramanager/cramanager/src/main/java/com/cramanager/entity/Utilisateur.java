@@ -10,7 +10,7 @@ Modification (sauf email)
 Activation / désactivation
 Champs :
 Nom, prénom, email
-Statut (mission / intercontrat)
+role (mission / intercontrat)
 Contrat (CDI / Indep / Portage)
 Séniorité (Junior / Confirmé / Expert)
 Salaire (champ libre)
@@ -18,26 +18,41 @@ Salaire (champ libre)
 
 import com.cramanager.enumeration.Contrat;
 import com.cramanager.enumeration.Seniorite;
+import com.cramanager.enumeration.StatutContrat;
 import com.cramanager.enumeration.UserRoles;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigInteger;
 
 @Entity
-public class User {
+@Table(name="utilisateurs")
+public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable=false)
     private String nom;
+
+    @Column(nullable=false)
     private String prenom;
+
+    @Column(nullable=false, unique = true)
     private Long email;
-    private UserRoles statut;
+
+    @Column(nullable=false)
+    private UserRoles role;
+
+    @Column(nullable=false)
     private Contrat contrat;
+
+    @Column(nullable=false)
     private Seniorite seniorité;
+
     private BigInteger salaire;
+
+    @Column(nullable=false)
+    private StatutContrat statut;
 
     public Long getId() {
         return id;
@@ -45,6 +60,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public StatutContrat getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutContrat statut) {
+        this.statut = statut;
     }
 
     public String getNom() {
@@ -71,12 +94,12 @@ public class User {
         this.email = email;
     }
 
-    public UserRoles getStatut() {
-        return statut;
+    public UserRoles getrole() {
+        return role;
     }
 
-    public void setStatut(UserRoles statut) {
-        this.statut = statut;
+    public void setrole(UserRoles role) {
+        this.role = role;
     }
 
     public Contrat getContrat() {
