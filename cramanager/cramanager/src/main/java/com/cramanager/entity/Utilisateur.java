@@ -21,108 +21,87 @@ import com.cramanager.enumeration.Seniorite;
 import com.cramanager.enumeration.StatutContrat;
 import com.cramanager.enumeration.UserRoles;
 import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.List;
 
+@Data
 @Entity
 @Table(name="utilisateurs")
-public class Utilisateur {
+public class Utilisateur implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String nom;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String prenom;
 
-    @Column(nullable=false, unique = true)
-    private Long email;
+    @Column(nullable = false, unique = true)
+    private String email;
 
-    @Column(nullable=false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private UserRoles role;
 
-    @Column(nullable=false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Contrat contrat;
 
-    @Column(nullable=false)
-    private Seniorite seniorité;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Seniorite seniorite;
 
-    private BigInteger salaire;
+    private BigDecimal salaire;
 
-    @Column(nullable=false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private StatutContrat statut;
 
-    public Long getId() {
-        return id;
+    @Column(nullable = false)
+    private String password;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public StatutContrat getStatut() {
-        return statut;
-    }
-
-    public void setStatut(StatutContrat statut) {
-        this.statut = statut;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public Long getEmail() {
+    @Override
+    public String getUsername() {
         return email;
     }
 
-    public void setEmail(Long email) {
-        this.email = email;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public UserRoles getrole() {
-        return role;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setrole(UserRoles role) {
-        this.role = role;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public Contrat getContrat() {
-        return contrat;
+    @Override
+    public boolean isEnabled() {
+        return statut == StatutContrat.MISSION;
     }
 
-    public void setContrat(Contrat contrat) {
-        this.contrat = contrat;
-    }
-
-    public Seniorite getSeniorité() {
-        return seniorité;
-    }
-
-    public void setSeniorité(Seniorite seniorité) {
-        this.seniorité = seniorité;
-    }
-
-    public BigInteger getSalaire() {
-        return salaire;
-    }
-
-    public void setSalaire(BigInteger salaire) {
-        this.salaire = salaire;
-    }
 }
