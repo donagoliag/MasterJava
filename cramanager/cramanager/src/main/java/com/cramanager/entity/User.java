@@ -53,17 +53,14 @@ public class User implements UserDetails {
     private UserRoles role;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Contrat contrat;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Seniorite seniorite;
 
     private BigDecimal salaire;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private StatutContrat statut;
 
     @Column(nullable = false)
