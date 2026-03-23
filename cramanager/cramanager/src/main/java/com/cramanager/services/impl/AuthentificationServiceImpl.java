@@ -40,15 +40,19 @@ public class AuthentificationServiceImpl implements AuthentificationService {
 
     }
 
-    public JwtAuthentificationResponse connexion(InscriptionRequest inscriptionRequest){
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(inscriptionRequest.getEmail(),inscriptionRequest.getPassword()));
+    public JwtAuthentificationResponse connexion(ConnexionRequest connexionRequest){
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(connexionRequest.getEmail(),connexionRequest.getPassword()));
 
-        var user = userRepository.findByEmail(inscriptionRequest.getEmail())
+        var user = userRepository.findByEmail(connexionRequest.getEmail())
                 .orElseThrow(()->new IllegalArgumentException(("Invalid email or password")));
 
         var jwt = jwtService.generationToken(user);
         var refreshtoken=jwtService.generateRefreshToken(new HashMap<>(), user);
 
+        JwtAuthentificationResponse jwtAuthentificationResponse = new JwtAuthentificationResponse();
+        jwtAuthentificationResponse.setToken(jwt);
+        jwtAuthentificationResponse.setRefreshToken(jwt);
+        return jwtAuthentificationResponse;
     }
 
 
