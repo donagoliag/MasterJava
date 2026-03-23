@@ -55,5 +55,4 @@ public class AuthentificationServiceImpl implements AuthentificationService {
         return jwtAuthentificationResponse;
     }
 
-
 }
