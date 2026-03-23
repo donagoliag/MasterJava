@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/admin")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthentificationController {
 
     private final AuthentificationService authentificationService;
 
-    @PostMapping("/Inscription")
+    @PostMapping("/inscription")
     public ResponseEntity<User> inscription (@RequestBody InscriptionRequest inscriptionRequest) {
         return ResponseEntity.ok(authentificationService.inscription(inscriptionRequest));
 
