@@ -4,6 +4,7 @@ package com.cramanager.controller;
 import com.cramanager.dto.ConnexionRequest;
 import com.cramanager.dto.InscriptionRequest;
 import com.cramanager.dto.JwtAuthentificationResponse;
+import com.cramanager.dto.RefreshTokenRequest;
 import com.cramanager.entity.User;
 import com.cramanager.services.AuthentificationService;
 import lombok.RequiredArgsConstructor;
@@ -27,10 +28,13 @@ public class AuthentificationController {
 
     }
 
-
     @PostMapping("/connexion")
-
     public ResponseEntity<JwtAuthentificationResponse> signin(@RequestBody ConnexionRequest connexionRequest) {
         return ResponseEntity.ok(authentificationService.connexion(connexionRequest));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtAuthentificationResponse> signin(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+        return ResponseEntity.ok(authentificationService.refreshToken(refreshTokenRequest));
     }
 }

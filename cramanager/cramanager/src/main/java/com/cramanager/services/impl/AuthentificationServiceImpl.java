@@ -3,6 +3,7 @@ package com.cramanager.services.impl;
 import com.cramanager.dto.ConnexionRequest;
 import com.cramanager.dto.InscriptionRequest;
 import com.cramanager.dto.JwtAuthentificationResponse;
+import com.cramanager.dto.RefreshTokenRequest;
 import com.cramanager.entity.User;
 import com.cramanager.enumeration.UserRoles;
 import com.cramanager.repository.UserRepository;
@@ -53,6 +54,21 @@ public class AuthentificationServiceImpl implements AuthentificationService {
         jwtAuthentificationResponse.setToken(jwt);
         jwtAuthentificationResponse.setRefreshToken(jwt);
         return jwtAuthentificationResponse;
+    }
+
+    public JwtAuthentificationResponse refreshToken(RefreshTokenRequest refreshTokenRequest){
+       String userEmail = jwtService.extractUserName(refreshTokenRequest.getToken());
+       User user = userRepository.findByEmail(userEmail).orElseThrow();
+       if(jwtService.isTokenValide(refreshTokenRequest.getToken(),user)){
+           var jwt = jwtService.generationToken(user);
+
+           JwtAuthentificationResponse jwtAuthentificationResponse = new JwtAuthentificationResponse();
+           jwtAuthentificationResponse.setToken(jwt);
+           jwtAuthentificationResponse.setRefreshToken(refreshTokenRequest.getToken());
+           return jwtAuthentificationResponse;
+       }
+
+       return null;
     }
 
 }
