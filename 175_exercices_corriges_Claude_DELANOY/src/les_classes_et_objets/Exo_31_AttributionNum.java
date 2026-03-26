@@ -9,7 +9,7 @@ Réaliser une classe qui permet d’attribuer un numéro unique à chaque nouvel
 tuellement détruits. On dotera la classe uniquement d’un constructeur, d’une méthode getI-
 dent fournissant le numéro attribué à l’objet et d’une méthode getIdentMax fournissant le
 numéro du dernier objet créé.
- */
+*/
 
 public class Exo_31_AttributionNum {
 
