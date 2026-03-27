@@ -1,6 +1,6 @@
 package les_classes_et_objets;
 
-/*Soit la classe Point ainsi définie :
+/* Soit la classe Point ainsi définie :
 class Point
 { public Point (double x, double y) { this.x = x ; this.y = y ; }
 public void deplace (double dx, double dy) { x += dx ; y += dy ; }
@@ -15,7 +15,7 @@ argument,
 • rotation qui effectue une rotation dont l’angle est fourni en argument,
 • rho et theta qui fournissent les coordonnées polaires du point,
 • afficheCart qui affiche les coordonnées cartésiennes du point,
-• affichePol qui affiche les coordonnées polaires du point.*/
+• affichePol qui affiche les coordonnées polaires du point */
 
 public class Exo_42_RepereCartesien {
 
