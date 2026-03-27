@@ -34,12 +34,13 @@ public class Exo_42_RepereCartesien {
 
     //rotation qui effectue une rotation dont l’angle est fourni en argument
     public void rotation (double angledeg){
-        double angleradian = (angledeg * Math.PI)/180;
+        double angleradian = Math.toRadians(angledeg);
 
-        Exo_42_RepereCartesien sauvegarde = new Exo_42_RepereCartesien(this.x,this.y);
+        double radx = this.x;
+        double rady = this.y;
 
-        this.x = sauvegarde.x*Math.cos(angleradian) - sauvegarde.y*Math.sin(angleradian);
-        this.y = sauvegarde.y*Math.cos(angleradian) + sauvegarde.x*Math.sin(angleradian);
+        this.x = radx*Math.cos(angleradian) - rady*Math.sin(angleradian);
+        this.y = rady*Math.cos(angleradian) + radx*Math.sin(angleradian);
 
     }
 
@@ -54,11 +55,11 @@ public class Exo_42_RepereCartesien {
 
     //afficheCart qui affiche les coordonnées cartésiennes du point,
     public String afficheCart (){
-        return ("abcisse_ "+ this.abscisse() + "_ordonnee_"+ this.ordonnee());
+        return ("abcisse_ "+ x + "_ordonnee_"+ y);
     }
 
     // affichePol qui affiche les coordonnées polaires du point.
-    public String pol (){
+    public String affichepol (){
         return ("abcissepolaire_ "+ this.rho() + "_ordonneepolaire_"+ this.theta());
     }
 
@@ -67,17 +68,17 @@ public class Exo_42_RepereCartesien {
 
         System.out.println("Avant Homotetie");
         System.out.println(pointA.afficheCart());
-        System.out.println(pointA.pol());
+        System.out.println(pointA.affichepol());
 
         System.out.println("Apres Homotetie");
         pointA.homothetie(2);
         System.out.println(pointA.afficheCart());
-        System.out.println(pointA.pol());
+        System.out.println(pointA.affichepol());
 
         System.out.println("Apres rotation");
         pointA.rotation(30);
         System.out.println(pointA.afficheCart());
-        System.out.println(pointA.pol());
+        System.out.println(pointA.affichepol());
 
     }
 
