@@ -43,11 +43,10 @@ public class Exo48_moyennemaxmin {
     public static void moy_min_max(){
 
         float[] tab = new float[5];
+        Scanner val = new Scanner(System.in);
         for (int i=0;i<5;i++){
-            Scanner val = new Scanner(System.in);
             System.out.println("valeur du tableua num _ " + (i+1));
-            float valeur = val.nextFloat();
-            tab[i]=valeur;
+            tab[i]=val.nextFloat();
         }
 
         System.out.println("Votre tableau au complet : ");
