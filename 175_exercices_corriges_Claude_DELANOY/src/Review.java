@@ -1,15 +1,16 @@
-public class Review {
-    public static void main(String[] args){
-        // Comparaison de chaînes (String)
-        String s1 = "Apple";
-        String s2 = "Banan";
-        int result = s1.compareTo(s2); // Retourne un nombre négatif car A < B
-        System.out.println(result);
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-// Comparaison de nombres (Integer)
-        Integer n1 = 5;
-        Integer n2 = 5;
-        boolean resultNum = n1.equals(n2); // Retourne 1 (positif) car 10 > 5
-        System.out.println(resultNum);
+public class Review {
+    public static void main(String[] args) {
+        List<Integer> nombre = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+
+        Function<Integer, Integer> carre = (x) -> {
+            return x * x;
+        };
+        nombre.replaceAll(x->x*x );
     }
 }
