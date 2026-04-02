@@ -5,7 +5,9 @@ import com.cramanager.enumeration.EtatCRA;
 import com.cramanager.enumeration.Seniorite;
 import com.cramanager.enumeration.UserRoles;
 import jakarta.persistence.*;
+import lombok.Data;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 
@@ -21,6 +23,7 @@ Motif
 TJM
 */
 
+@Data
 @Entity
 @Table(name="mission")
 public class Mission {
@@ -32,69 +35,18 @@ public class Mission {
     private String titre;
 
     @Column(nullable=false)
-    private LocalDate DateDebut;
+    private LocalDate datedebut;
 
-    @Column(nullable=false)
-    private LocalDate DateFin;
+    @Column(nullable=true)
+    private LocalDate datefin;
 
-
+    @Column(nullable=true)
     private String description;
+
+    @Column(nullable=true)
     private String motif;
-    private BigInteger TJM;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(nullable=true)
+    private BigDecimal tjm;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public LocalDate getDateDebut() {
-        return DateDebut;
-    }
-
-    public void setDateDebut(LocalDate dateDebut) {
-        DateDebut = dateDebut;
-    }
-
-    public LocalDate getDateFin() {
-        return DateFin;
-    }
-
-    public void setDateFin(LocalDate dateFin) {
-        DateFin = dateFin;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getMotif() {
-        return motif;
-    }
-
-    public void setMotif(String motif) {
-        this.motif = motif;
-    }
-
-    public BigInteger getTJM() {
-        return TJM;
-    }
-
-    public void setTJM(BigInteger TJM) {
-        this.TJM = TJM;
-    }
 }

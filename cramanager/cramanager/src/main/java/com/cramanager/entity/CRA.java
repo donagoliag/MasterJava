@@ -30,83 +30,43 @@ Hors fenêtre 22–28 :
 Modifiable uniquement si non validé
 */
 
+import com.cramanager.enumeration.Contrat;
 import com.cramanager.enumeration.EtatCRA;
 import com.cramanager.enumeration.StatutContrat;
 import com.cramanager.enumeration.TypeAbsence;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 
+@Data
 @Entity
 @Table(name = "CRA")
 public class CRA {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @Column(nullable = false)
-    private YearMonth mois;
-
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EtatCRA etatCRA;
 
+    @ManyToOne
+    @JoinColumn(name="mission_id",nullable = true)
+    private Mission mission;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false)
+    private User user;
+
     @Column(nullable = false)
-    private String motif_rejet_invalidation;
-
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime dateEtat;
+    private int mois;
 
     @Column(nullable = false)
-    private StatutContrat Typecontrat;
+    private int annee;
 
-    private TypeAbsence typeAbsence;
+    private String motifRejet;
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public YearMonth getMois() {
-        return mois;
-    }
-
-    public void setMois(YearMonth mois) {
-        this.mois = mois;
-    }
-
-    public EtatCRA getEtatCRA() {
-        return etatCRA;
-    }
-
-    public void setEtatCRA(EtatCRA etatCRA) {
-        this.etatCRA = etatCRA;
-    }
-
-    public String getMotif_rejet_invalidation() {
-        return motif_rejet_invalidation;
-    }
-
-    public void setMotif_rejet_invalidation(String motif_rejet_invalidation) {
-        this.motif_rejet_invalidation = motif_rejet_invalidation;
-    }
-
-    public LocalDateTime getDateEtat() {
-        return dateEtat;
-    }
-
-    public void setDateEtat(LocalDateTime dateEtat) {
-        this.dateEtat = dateEtat;
-    }
-
-    public StatutContrat getTypecontrat() {
-        return Typecontrat;
-    }
-
-    public void setTypecontrat(StatutContrat typecontrat) {
-        Typecontrat = typecontrat;
-    }
 }

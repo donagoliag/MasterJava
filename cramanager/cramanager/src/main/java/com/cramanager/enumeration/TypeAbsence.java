@@ -5,5 +5,5 @@ public enum TypeAbsence {
     CONGE,
     RTT,
     MALADIE,
-    REGLES
+    TRAVAILLE
 }
