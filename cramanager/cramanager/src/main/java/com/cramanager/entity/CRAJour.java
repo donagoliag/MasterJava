@@ -1,14 +1,10 @@
 package com.cramanager.entity;
 
-
-import com.cramanager.enumeration.EtatCRA;
 import com.cramanager.enumeration.TypeAbsence;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.time.LocalDate;
-import java.time.MonthDay;
 
 @Data
 @Entity
