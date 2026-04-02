@@ -1,7 +1,7 @@
 package com.cramanager.services.impl;
 
-import com.cramanager.dto.USER.UpdateRequest;
-import com.cramanager.dto.USER.UserResponseRequest;
+import com.cramanager.dto.User.UpdateRequest;
+import com.cramanager.dto.User.UserResponseRequest;
 import com.cramanager.entity.User;
 import com.cramanager.repository.UserRepository;
 import com.cramanager.services.UserService;
@@ -10,13 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.webauthn.management.UserCredentialRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

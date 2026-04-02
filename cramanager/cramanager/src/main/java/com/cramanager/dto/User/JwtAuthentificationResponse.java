@@ -1,4 +1,4 @@
-package com.cramanager.dto.USER;
+package com.cramanager.dto.User;
 
 import lombok.Data;
 

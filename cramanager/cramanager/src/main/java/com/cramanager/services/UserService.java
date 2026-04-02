@@ -1,12 +1,8 @@
 package com.cramanager.services;
 
-import com.cramanager.dto.USER.UpdateRequest;
-import com.cramanager.dto.USER.UserResponseRequest;
-import com.cramanager.entity.User;
-import lombok.RequiredArgsConstructor;
+import com.cramanager.dto.User.UpdateRequest;
+import com.cramanager.dto.User.UserResponseRequest;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.webauthn.management.UserCredentialRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

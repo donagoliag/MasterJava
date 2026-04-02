@@ -1,9 +1,9 @@
 package com.cramanager.services.impl;
 
-import com.cramanager.dto.USER.ConnexionRequest;
-import com.cramanager.dto.USER.InscriptionRequest;
-import com.cramanager.dto.USER.JwtAuthentificationResponse;
-import com.cramanager.dto.USER.RefreshTokenRequest;
+import com.cramanager.dto.User.ConnexionRequest;
+import com.cramanager.dto.User.InscriptionRequest;
+import com.cramanager.dto.User.JwtAuthentificationResponse;
+import com.cramanager.dto.User.RefreshTokenRequest;
 import com.cramanager.entity.User;
 import com.cramanager.repository.UserRepository;
 import com.cramanager.services.AuthentificationService;

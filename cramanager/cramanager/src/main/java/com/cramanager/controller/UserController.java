@@ -1,7 +1,7 @@
 package com.cramanager.controller;
 
-import com.cramanager.dto.USER.UpdateRequest;
-import com.cramanager.dto.USER.UserResponseRequest;
+import com.cramanager.dto.User.UpdateRequest;
+import com.cramanager.dto.User.UserResponseRequest;
 import com.cramanager.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
