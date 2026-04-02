@@ -1,14 +1,13 @@
 package com.cramanager.controller;
 
 
-import com.cramanager.dto.ConnexionRequest;
-import com.cramanager.dto.InscriptionRequest;
-import com.cramanager.dto.JwtAuthentificationResponse;
-import com.cramanager.dto.RefreshTokenRequest;
+import com.cramanager.dto.USER.ConnexionRequest;
+import com.cramanager.dto.USER.InscriptionRequest;
+import com.cramanager.dto.USER.JwtAuthentificationResponse;
+import com.cramanager.dto.USER.RefreshTokenRequest;
 import com.cramanager.entity.User;
 import com.cramanager.services.AuthentificationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.saml2.Saml2RelyingPartyProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
