@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -30,12 +31,14 @@ public class AuthentificationServiceImpl implements AuthentificationService {
         user.setEmail(inscriptionRequest.getEmail());
         user.setNom(inscriptionRequest.getNom());
         user.setPrenom(inscriptionRequest.getPrenom());
-        user.setRole(UserRoles.USER);
         user.setContrat(inscriptionRequest.getContrat());
         user.setSeniorite(inscriptionRequest.getSeniorite());
         user.setStatut(inscriptionRequest.getStatut());
         user.setSalaire(inscriptionRequest.getSalaire());
         user.setPassword(passwordEncoder.encode(inscriptionRequest.getPassword()));
+        user.setRole(inscriptionRequest.getRoles());
+        user.setActive(false);
+        user.setActivationToken(UUID.randomUUID().toString());
 
         return userRepository.save(user);
 
