@@ -68,6 +68,7 @@ public class MissionServiceImpl implements MissionService {
       return missionResponse;
     }
 
+    //delete mission
     public void deleteMission(Long id){
         Mission mission = missionRepository.findById(id).orElseThrow(
                 ()->new EntityNotFoundException("Mission non trouve pour l'id : "+id));
@@ -76,7 +77,7 @@ public class MissionServiceImpl implements MissionService {
     }
 
 
-
+    //Retrouver une mission
     public MissionResponse getMissionById(Long id){
         Mission mission = missionRepository.findById(id).orElseThrow(
                 ()->new EntityNotFoundException("Mission non trouve pour l'id : "+id));
@@ -94,16 +95,8 @@ public class MissionServiceImpl implements MissionService {
 
     }
 
-    private String titre;
-    private LocalDate datedebut;
-    private LocalDate datefin;
-    private String description;
-    private String motif;
-    private BigDecimal tjm;
 
-    /*Pour getMissionById : appeler repository.findById(id), lever une exception si vide,
-    sinon mapper vers MissionResponse.*/
-
+    //List Mission
     public List<MissionResponse> getAllMissions(){
         List<Mission> missions = missionRepository.findAll();
 
