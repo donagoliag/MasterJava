@@ -6,6 +6,7 @@ import com.cramanager.entity.Mission;
 import com.cramanager.repository.MissionRepository;
 import com.cramanager.services.MissionService;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,9 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MissionServiceImpl implements MissionService {
 
-    private MissionRepository missionRepository;
+    private final MissionRepository missionRepository;
 
 
     //Creer une mission
@@ -46,7 +48,7 @@ public class MissionServiceImpl implements MissionService {
     //Update Mission
     public MissionResponse updateMission(Long id, MissionRequest request){
       Mission mission = missionRepository.findById(id).orElseThrow(
-              ()->new EntityNotFoundException("Mission non trouve pour l'id : "+id));
+              ()->new EntityNotFoundException("Mission non trouve pour l'id : " + id));
 
       mission.setTitre(request.getTitre());
       mission.setDatedebut(request.getDatedebut());
