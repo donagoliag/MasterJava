@@ -39,6 +39,8 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -68,5 +70,8 @@ public class CRA {
     private int annee;
 
     private String motifRejet;
+
+    @OneToMany(mappedBy = "cra", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CRAJour> jours = new ArrayList<>();
 
 }

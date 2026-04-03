@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -69,4 +71,23 @@ public class AffectationServiceImpl implements AffectationService {
         return affectationResponse;
     }
 
+
+    public List<AffectationResponse> getAllAffectation(){
+
+        List<Affectation> affectations = affectationRepository.findAll();
+        List<AffectationResponse> affectationResponses = new ArrayList<>();
+        for (Affectation v: affectations){
+            AffectationResponse affectationResponse = new AffectationResponse();
+
+            affectationResponse.setId(v.getId());
+            affectationResponse.setMissionid(v.getMission().getId());
+            affectationResponse.setUserid(v.getUser().getId());
+            affectationResponse.setDateAffectation(v.getDateAffectation());
+
+            affectationResponses.add(affectationResponse);
+        }
+
+
+        return affectationResponses;
+    }
 }

@@ -36,4 +36,5 @@ public class AuthentificationController {
     public ResponseEntity<JwtAuthentificationResponse> signin(@RequestBody RefreshTokenRequest refreshTokenRequest) {
         return ResponseEntity.ok(authentificationService.refreshToken(refreshTokenRequest));
     }
+
 }
