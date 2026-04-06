@@ -18,5 +18,6 @@ public interface CraService {
     void validerCRA(Long craId);
     void rejeterCRA(Long craId, String motif);
     void invaliderCRA(Long craId, String motif);
+    List<CraResponse> getCraNonSoumis(int mois, int annee);
 
 }

@@ -1,6 +1,9 @@
 package com.cramanager;
 
 import com.cramanager.entity.User;
+import com.cramanager.enumeration.Contrat;
+import com.cramanager.enumeration.Seniorite;
+import com.cramanager.enumeration.StatutContrat;
 import com.cramanager.enumeration.UserRoles;
 import com.cramanager.repository.UserRepository;
 import org.apache.commons.lang3.ObjectUtils;
@@ -28,10 +31,14 @@ public class CramanagerApplication implements CommandLineRunner {
 		if (compteadmin.isEmpty()){
 			User user = new User();
 
-			user.setEmail("admin@gmailcom");
+			user.setEmail("admin@.gmailcom");
 			user.setRole(UserRoles.SYSADMIN);
 			user.setPrenom("admin");
 			user.setNom("admin");
+			user.setActive(true);
+			user.setContrat(Contrat.CDI);
+			user.setSeniorite(Seniorite.EXPERT);
+			user.setStatut(StatutContrat.MISSION);
 			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
 			userRepository.save(user);
 		}

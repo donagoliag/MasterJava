@@ -275,4 +275,35 @@ public class CraServiceImpl implements CraService {
         cra.setMotifRejet(motif);
         craRepository.save(cra);
     }
+
+    // Retourne tous les CRA non soumis pour un mois/année donné
+    public List<CraResponse> getCraNonSoumis(int mois, int annee) {
+
+        List<CRA> crasNonSoumis = craRepository.findByMoisAndAnneeAndEtatCRANot(mois, annee, EtatCRA.SOUMIS);
+
+        List<CraResponse> listCraResponse = new ArrayList<>();
+
+        for (CRA v : crasNonSoumis) {
+            CraResponse craResponse = new CraResponse();
+            craResponse.setId(v.getId());
+            craResponse.setUserid(v.getUser().getId());
+            craResponse.setMissionid(v.getMission() != null ? v.getMission().getId() : null);
+            craResponse.setMois(v.getMois());
+            craResponse.setAnnee(v.getAnnee());
+            craResponse.setEtatCRA(v.getEtatCRA());
+            craResponse.setJours(
+                    v.getJours().stream().map(j -> {
+                        CraJourResponse jr = new CraJourResponse();
+                        jr.setId(j.getId());
+                        jr.setCraid(v.getId());
+                        jr.setJour(j.getJour());
+                        jr.setType(j.getType());
+                        return jr;
+                    }).collect(Collectors.toList())
+            );
+            listCraResponse.add(craResponse);
+        }
+
+        return listCraResponse;
+    }
 }
