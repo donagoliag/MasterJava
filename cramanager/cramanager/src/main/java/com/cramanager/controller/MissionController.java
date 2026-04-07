@@ -15,7 +15,7 @@ import java.util.List;
 
 @Tag(name = "Missions", description = "Gestion des missions")
 @RestController
-@RequestMapping("/api/v1/mission")
+@RequestMapping("/api/mission")
 @RequiredArgsConstructor
 public class MissionController {
 

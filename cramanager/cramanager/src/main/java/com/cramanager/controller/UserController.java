@@ -13,7 +13,7 @@ import java.util.List;
 
 @Tag(name = "Utilisateurs", description = "Gestion des collaborateurs — admin seulement")
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
 

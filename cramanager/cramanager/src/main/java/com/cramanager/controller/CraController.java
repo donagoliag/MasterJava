@@ -16,7 +16,7 @@ import java.util.List;
 
 @Tag(name = "CRA", description = "Gestion des comptes rendus d'activité")
 @RestController
-@RequestMapping("/api/v1/cra")
+@RequestMapping("/api/cra")
 @RequiredArgsConstructor
 public class CraController {
 

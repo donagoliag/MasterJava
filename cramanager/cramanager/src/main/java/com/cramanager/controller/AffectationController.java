@@ -13,7 +13,7 @@ import java.util.List;
 
 @Tag(name = "Affectations", description = "Gestion des affectations collaborateur ↔ mission")
 @RestController
-@RequestMapping("/api/v1/affectation")
+@RequestMapping("/api/affectation")
 @RequiredArgsConstructor
 public class AffectationController {
 
