@@ -31,7 +31,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
-    @Operation(summary = "Modifier un collaborateur — email non modifiable")
+    @Operation(summary = "Modifier un collaborateur, lemail non modifiable")
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseRequest> majuser(@PathVariable Long id, @RequestBody UpdateRequest request) {
         return ResponseEntity.ok(userService.updateUser(id, request));

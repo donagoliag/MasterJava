@@ -40,7 +40,7 @@ public class CraServiceImpl implements CraService {
     private final AffectationRepository affectationRepository;
     private final MissionService missionService;
 
-    // Crée un CRA DRAFT pour un collab pour un mois/année donné, récupère automatiquement sa mission active sil en a
+    // Crée un CRA DRAFT pour un collab pour un mois/année donné. Le cra récupère automatiquement sa mission active sil en a
     public CraResponse creerCRA(CraRequest request){
 
         //Retrouver le user a partir de son id
@@ -216,7 +216,7 @@ public class CraServiceImpl implements CraService {
 
         // Vérifier qu'on est entre le 22 et 28 du mois (timezone Paris)
         LocalDate today = LocalDate.now(ZoneId.of("Europe/Paris"));
-        if (today.getDayOfMonth() < 22 || today.getDayOfMonth() > 28) {
+        if (today.getDayOfMonth() < 6 || today.getDayOfMonth() > 28) {
             throw new IllegalStateException("La soumission n'est autorisée qu'entre le 22 et le 28 du mois");
         }
 

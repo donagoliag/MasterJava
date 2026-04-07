@@ -31,7 +31,7 @@ public class CramanagerApplication implements CommandLineRunner {
 		if (compteadmin.isEmpty()){
 			User user = new User();
 
-			user.setEmail("admin@.gmailcom");
+			user.setEmail("admin@gmail.com");
 			user.setRole(UserRoles.SYSADMIN);
 			user.setPrenom("admin");
 			user.setNom("admin");

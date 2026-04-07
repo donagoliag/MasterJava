@@ -31,7 +31,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(request -> request
 
                         // Les routes Public
-                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/user/activate").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
@@ -39,21 +40,22 @@ public class SecurityConfiguration {
                         ).permitAll()
 
                         // Pour SYSADMIN
-                        .requestMatchers("/api/v1/user/**").hasAuthority("ROLE_SYSADMIN")
-                        .requestMatchers("/api/v1/mission/**").hasAuthority("ROLE_SYSADMIN")
-                        .requestMatchers("/api/v1/affectation/**").hasAuthority("ROLE_SYSADMIN")
-                        .requestMatchers("/api/v1/cra/*/valider").hasAuthority("ROLE_SYSADMIN")
-                        .requestMatchers("/api/v1/cra/*/rejeter").hasAuthority("ROLE_SYSADMIN")
-                        .requestMatchers("/api/v1/cra/*/invalider").hasAuthority("ROLE_SYSADMIN")
-                        .requestMatchers("/api/v1/cra/non-soumis").hasAuthority("ROLE_SYSADMIN")
+                        .requestMatchers("/api/user/**").hasAuthority("ROLE_SYSADMIN")
+                        .requestMatchers("/api/mission/**").hasAuthority("ROLE_SYSADMIN")
+                        .requestMatchers("/api/affectation/**").hasAuthority("ROLE_SYSADMIN")
+                        .requestMatchers("/api/cra/*/valider").hasAuthority("ROLE_SYSADMIN")
+                        .requestMatchers("/api/cra/*/rejeter").hasAuthority("ROLE_SYSADMIN")
+                        .requestMatchers("/api/cra/*/invalider").hasAuthority("ROLE_SYSADMIN")
+                        .requestMatchers("/api/cra/non-soumis").hasAuthority("ROLE_SYSADMIN")
+
 
                         // Pour USER
-                        .requestMatchers("/api/v1/cra/*/remplir-mois").hasAuthority("ROLE_USER")
-                        .requestMatchers("/api/v1/cra/*/remplir-jour").hasAuthority("ROLE_USER")
-                        .requestMatchers("/api/v1/cra/*/soumettre").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/cra/*/remplir-mois").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/cra/*/remplir-jour").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/cra/*/soumettre").hasAuthority("ROLE_USER")
 
                         // Pour SYS ADMIN ET COLLAB AUTHENTIFIES
-                        .requestMatchers("/api/v1/cra/**").authenticated()
+                        .requestMatchers("/api/cra/**").authenticated()
 
                         .anyRequest().authenticated()
                 )

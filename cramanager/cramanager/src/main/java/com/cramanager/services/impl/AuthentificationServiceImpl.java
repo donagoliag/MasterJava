@@ -54,7 +54,7 @@ public class AuthentificationServiceImpl implements AuthentificationService {
 
         JwtAuthentificationResponse jwtAuthentificationResponse = new JwtAuthentificationResponse();
         jwtAuthentificationResponse.setToken(jwt);
-        jwtAuthentificationResponse.setRefreshToken(jwt);
+        jwtAuthentificationResponse.setRefreshToken(refreshtoken);
         return jwtAuthentificationResponse;
     }
 

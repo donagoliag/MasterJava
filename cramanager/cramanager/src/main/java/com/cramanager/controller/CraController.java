@@ -40,7 +40,7 @@ public class CraController {
         return ResponseEntity.ok(craService.getCRAByUser(userId));
     }
 
-    @Operation(summary = "Remplir tous les jours ouvrés du mois en 1 clic")
+    @Operation(summary = "Remplir tous les jours ouvrés du mois")
     @PatchMapping("/{craId}/remplir-mois")
     public ResponseEntity<Void> remplirMois(@PathVariable Long craId) {
         craService.remplirMois(craId);
@@ -54,35 +54,35 @@ public class CraController {
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Soumettre le CRA — uniquement entre le 22 et le 28 du mois")
+    @Operation(summary = "Soumettre le CRA : uniquement entre le 22 et le 28 du mois")
     @PatchMapping("/{craId}/soumettre")
     public ResponseEntity<Void> soumettreCRA(@PathVariable Long craId) {
         craService.soumettreCRA(craId);
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Valider un CRA — admin seulement")
+    @Operation(summary = "Valider un CRA : pour admin seulement")
     @PatchMapping("/{craId}/valider")
     public ResponseEntity<Void> validerCRA(@PathVariable Long craId) {
         craService.validerCRA(craId);
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Rejeter un CRA — admin seulement, motif obligatoire")
+    @Operation(summary = "Rejeter un CRA (pour admin seulement, motif obligatoire)")
     @PatchMapping("/{craId}/rejeter")
     public ResponseEntity<Void> rejeterCRA(@PathVariable Long craId, @RequestParam String motif) {
         craService.rejeterCRA(craId, motif);
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Invalider un CRA approuvé — admin seulement, motif obligatoire")
+    @Operation(summary = "Invalider un CRA approuvé (admin seulement, motif obligatoire)")
     @PatchMapping("/{craId}/invalider")
     public ResponseEntity<Void> invaliderCRA(@PathVariable Long craId, @RequestParam String motif) {
         craService.invaliderCRA(craId, motif);
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Lister les CRA non soumis pour un mois donné — alerte admin")
+    @Operation(summary = "Lister les CRA non soumis pour un mois donné (pour les alerte admin)")
     @GetMapping("/non-soumis")
     public ResponseEntity<List<CraResponse>> getCraNonSoumis(@RequestParam int mois, @RequestParam int annee) {
         return ResponseEntity.ok(craService.getCraNonSoumis(mois, annee));
