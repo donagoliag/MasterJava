@@ -31,6 +31,20 @@ class Couple<T>
     }
 }
 
+class PointNomme extends Couple<Integer>{
+
+    private String nom;
+
+    public PointNomme (Integer premier, Integer second, String name){
+        super(premier,second);
+        nom=name;
+    }
+
+    public void affiche ()
+    { System.out.print ("Coordonnees de " + this.nom + ": ") ;
+        super.affiche();
+    }
+}
 
 public class Exo_158<T> extends Couple<T> {
 
@@ -42,7 +56,26 @@ public class Exo_158<T> extends Couple<T> {
     }
 
     public void affiche ()
-    { System.out.print ("Coordeonnees de " + this.nom + ": ") ;
+    { System.out.print ("Coordonnees de " + this.nom + ": ") ;
         super.affiche();
+    }
+
+    public static void main(String[] args) {
+
+        // Test de Exo_158 (CoupleNomme générique)
+        Exo_158<String> coupleNom1 = new Exo_158<>("Alice", "Bob", "Amis");
+        coupleNom1.affiche();
+
+        Exo_158<Integer> coupleNom2 = new Exo_158<>(10, 20, "Points");
+        coupleNom2.affiche();
+
+        System.out.println();
+
+        // Test de PointNomme (classe non générique)
+        PointNomme point1 = new PointNomme(5, 8, "Coordonnées A");
+        point1.affiche();
+
+        PointNomme point2 = new PointNomme(12, 20, "Coordonnées B");
+        point2.affiche();
     }
 }
