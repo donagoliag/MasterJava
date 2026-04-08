@@ -19,6 +19,5 @@ public class Exo_156 {
 
         System.out.println(extrator(nouveau));
         System.out.println(extrator(nbre));
-
     }
 }
